@@ -1,7 +1,7 @@
 {
   "name": "iac-saas-marketing",
-  "version": "1.0.0",
-  "description": "TypeScript control plane and sample infrastructure artifacts for scalable SaaS marketing environments, promotion flow, edge posture, and delivery readiness.",
+  "version": "1.1.0",
+  "description": "Board-ready Kinetic Gain surface for scalable SaaS marketing infrastructure, promotion flow, edge posture, and environment readiness.",
   "main": "dist/src/app.js",
   "scripts": {
     "dev": "tsx watch src/app.ts",
@@ -9,19 +9,20 @@
     "test": "vitest run",
     "demo": "tsx scripts/run_demo.ts",
     "smoke": "tsx scripts/smoke_check.ts",
-    "verify": "npm run build && npm run test && npm run demo && npm run smoke",
+    "prerender": "tsx scripts/prerender.ts",
+    "verify": "npm run build && npm run test && npm run demo && npm run smoke && npm run prerender",
     "render:assets": "powershell -ExecutionPolicy Bypass -File .\\scripts\\render_readme_assets.ps1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mizcausevic-dev/iac-saas-marketing.git"
   },
-  "license": "ISC",
+  "license": "AGPL-3.0-or-later",
   "type": "commonjs",
   "bugs": {
     "url": "https://github.com/mizcausevic-dev/iac-saas-marketing/issues"
   },
-  "homepage": "https://github.com/mizcausevic-dev/iac-saas-marketing#readme",
+  "homepage": "http://iac.kineticgain.com/",
   "dependencies": {
     "express": "^5.2.1"
   },

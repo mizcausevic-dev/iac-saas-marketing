@@ -1,6 +1,9 @@
-# iac-saas-marketing
+# IAC SaaS Marketing
 
-Infrastructure-as-code control plane for scalable SaaS marketing environments: environment topology, edge posture, deployment promotion, and delivery-readiness modeling.
+Board-ready Kinetic Gain surface for scalable SaaS marketing infrastructure, promotion flow, edge posture, and environment readiness.
+
+- Live: [http://iac.kineticgain.com/](http://iac.kineticgain.com/)
+- Repo: [https://github.com/mizcausevic-dev/iac-saas-marketing](https://github.com/mizcausevic-dev/iac-saas-marketing)
 
 ## What it shows
 
@@ -68,6 +71,7 @@ Then open:
 
 ```powershell
 npm run verify
+npm run prerender
 npm run render:assets
 ```
 

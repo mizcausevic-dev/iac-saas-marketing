@@ -252,6 +252,53 @@ function pageShell(title: string, activeRoute: string, body: string) {
       display: grid;
       gap: 16px;
     }
+    .strategy-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+    .strategy-card {
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(17, 27, 50, 0.82), rgba(8, 15, 31, 0.9));
+      padding: 20px;
+      min-height: 210px;
+    }
+    .strategy-card h3 {
+      margin: 10px 0 12px;
+      font-size: 20px;
+      line-height: 1.25;
+    }
+    .strategy-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.62;
+    }
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+    .evidence-card {
+      border: 1px solid rgba(96, 165, 250, 0.22);
+      border-radius: 22px;
+      background: rgba(9, 16, 31, 0.72);
+      padding: 20px;
+    }
+    .evidence-card strong {
+      display: block;
+      color: #eaf2ff;
+      margin-bottom: 8px;
+      font-size: 17px;
+    }
+    .evidence-card span {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
     .artifact, .lane-item, .verify-item {
       border: 1px solid var(--border);
       border-radius: 22px;
@@ -410,6 +457,7 @@ function pageShell(title: string, activeRoute: string, body: string) {
       .hero-grid, .topology-layout, .docs-layout { grid-template-columns: 1fr; }
       .kpi-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .wide, .narrow { grid-column: 1 / -1; }
+      .strategy-grid, .evidence-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     @media (max-width: 760px) {
       .wrap { width: min(100% - 20px, 100%); }
@@ -417,6 +465,7 @@ function pageShell(title: string, activeRoute: string, body: string) {
       .tabs { gap: 10px; }
       .tab { width: 100%; }
       .kpi-row { grid-template-columns: 1fr; }
+      .strategy-grid, .evidence-grid { grid-template-columns: 1fr; }
       .inspector-actions { grid-template-columns: 1fr; }
     }
   </style>
@@ -452,6 +501,35 @@ function pageShell(title: string, activeRoute: string, body: string) {
   </div>
 </body>
 </html>`;
+}
+
+function productDepthSection() {
+  return `<article class="card full">
+    <div class="panel-label">What this product does</div>
+    <h2 class="section-title">A revenue-infrastructure control plane for campaign systems that need clean traffic, clean proof, and safe releases.</h2>
+    <p class="section-copy">This surface is built for SaaS operators who need to explain why marketing infrastructure is not just hosting. It connects campaign routing, preview/prod separation, analytics event integrity, secrets posture, and release gates into one board-readable operating model.</p>
+    <div class="panel-label">What these repos have in common</div>
+    <p class="section-copy">The suite pattern is consistent: convert fragmented operational evidence into a product surface that names the owner, the risk, the proof, the next action, and the executive story.</p>
+    <div class="strategy-grid">
+      <div class="strategy-card"><div class="mini">GTM analyst lens</div><h3>Where the funnel can break.</h3><p>Shows how a launch can look successful while attribution, edge routing, preview traffic, or analytics events quietly contaminate conversion reporting.</p></div>
+      <div class="strategy-card"><div class="mini">SaaS value lens</div><h3>Where the money leaks.</h3><p>Connects release posture to CAC waste, campaign misread, paid-traffic leakage, and duplicated platform work across growth, web, and analytics teams.</p></div>
+      <div class="strategy-card"><div class="mini">Technical proof</div><h3>What engineers can inspect.</h3><p>Ships concrete topology data, deploy stages, Terraform specimens, route surfaces, prerendered pages, tests, and a local verification command instead of a flat sales page.</p></div>
+      <div class="strategy-card"><div class="mini">Shared pattern</div><h3>Why it belongs in the suite.</h3><p>Like the other Kinetic Gain surfaces, it turns operational ambiguity into an evidence packet: owner, risk, route, proof, next action, and board-safe language.</p></div>
+    </div>
+  </article>`;
+}
+
+function evidenceDepthSection() {
+  return `<article class="card full">
+    <div class="panel-label">Buyer and technical handoff</div>
+    <h2 class="section-title">The common thread is not the domain name. It is proof that a growth system can be operated safely.</h2>
+    <p class="section-copy">A non-technical leader should see what is exposed, what can be cleaned up, where the savings sit, and what story can be taken to a board. A technical reviewer should see that the page is backed by code, routes, build checks, specimens, and inspectable payloads.</p>
+    <div class="evidence-grid">
+      <div class="evidence-card"><strong>For executives</strong><span>Clear explanation of why web infrastructure affects revenue quality, reporting confidence, and launch risk.</span></div>
+      <div class="evidence-card"><strong>For operators</strong><span>Route-level workflow for deciding what to standardize, automate, protect, or escalate before release.</span></div>
+      <div class="evidence-card"><strong>For engineers</strong><span>Typed service layer, prerendered pages, smoke checks, topology data, and Terraform samples that make the narrative auditable.</span></div>
+    </div>
+  </article>`;
 }
 
 function statusClass(status: string) {
@@ -574,6 +652,8 @@ export function renderOverview() {
       <p>Best use case: enterprise marketing systems where campaign launch speed, traffic quality, analytics trust, and release confidence have to move together instead of being owned in isolated silos.</p>
     </article>
 
+    ${productDepthSection()}
+
     <article class="card wide">
       <div class="panel-label">Decoupled posture files</div>
       <h2 class="section-title">Starter template explorer.</h2>
@@ -691,6 +771,8 @@ export function renderDeployLane() {
 
 export function renderVerification() {
   return `<section class="section">
+    ${evidenceDepthSection()}
+
     <article class="card wide">
       <div class="panel-label">Operator verification</div>
       <h2 class="section-title">What this repo proves.</h2>
@@ -716,6 +798,8 @@ export function renderDocs() {
   const artifactItems = artifacts();
 
   return `<section class="section">
+    ${productDepthSection()}
+
     <article class="card wide">
       <div class="panel-label">System artifact / principal technical spec</div>
       <h2 class="section-title">Headless-grade SaaS marketing infrastructure.</h2>
